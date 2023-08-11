@@ -1,7 +1,4 @@
 {
-  "engines": {
-    "node": "16.x"
-  },
   "name": "with-tailwindcss",
   "version": "0.1.0",
   "private": true,
@@ -22,5 +19,8 @@
     "autoprefixer": "^10.0.4",
     "postcss": "^8.1.10",
     "tailwindcss": "^2.1.1"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }

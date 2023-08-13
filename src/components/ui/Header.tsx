@@ -5,11 +5,11 @@ function Header() {
   return (
     <header className="p-6 lg:px-8">
       <div className="flex lg:flex-1">
-        <Link href="#">
+        <Link href="/">
           <a className="m-1.5 p-1.5">
-            <span className="sr-only">Pokemon Cards</span>
+            <span className="sr-only">Snowboards</span>
             <Image
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              src="/images/logo.jpg"
               alt="tailwind logo"
               width={40}
               height={40}

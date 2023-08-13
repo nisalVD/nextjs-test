@@ -5,10 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "codegen": "graphql-codegen --config src/codegen.ts",
+    "codegen:watch": "graphql-codegen --watch --config src/codegen.ts"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",
+    "graphql": "^16.7.1",
+    "graphql-request": "^6.1.0",
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -16,9 +20,15 @@
     "typescript": "^5.1.6"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/typescript": "4.0.1",
+    "@parcel/watcher": "^2.2.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/node": "^16.18.40",
     "@types/react": "17.0.19",
     "autoprefixer": "^10.0.4",
+    "dotenv": "^16.3.1",
     "postcss": "^8.1.10",
     "tailwindcss": "^2.1.1"
   },

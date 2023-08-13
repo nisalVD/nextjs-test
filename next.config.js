@@ -1,9 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   images: {
-    domains: ["tailwindui.com"],
+    domains: ["tailwindui.com", "cdn.shopify.com"],
   },
   reactStrictMode: true,
 };
-
-module.exports = nextConfig;

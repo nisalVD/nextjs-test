@@ -48,7 +48,7 @@ export default function Product(
             <div className="mt-6 flex items-center">
               {product.availableForSale && (
                 <>
-                  <span>✓</span>
+                  <span className="text-green-600">✓</span>
                   <p className="ml-2 text-sm text-gray-500">
                     In stock and ready to ship
                   </p>
@@ -56,7 +56,34 @@ export default function Product(
               )}
             </div>
             <div className="pt-4">
-              <Button size="full">Add To Bag</Button>
+              <Button
+                onClick={() => {
+                  const currentCart = localStorage.getItem("cart");
+                  let parsedCart = {};
+
+                  try {
+                    parsedCart = JSON.parse(currentCart);
+                  } catch (err) {
+                    parsedCart = {};
+                  }
+
+                  if (parsedCart[product.handle]) {
+                    parsedCart[product.handle].qty += 1;
+                  } else {
+                    parsedCart[product.handle] = {
+                      img: product?.images?.edges[0]?.node?.url,
+                      price: product.priceRange.minVariantPrice.amount,
+                      title: product.title,
+                      qty: 1,
+                    };
+                  }
+
+                  localStorage.setItem("cart", JSON.stringify(parsedCart));
+                }}
+                size="full"
+              >
+                Add To Bag
+              </Button>
             </div>
           </section>
         </div>
@@ -77,7 +104,7 @@ export default function Product(
           {products.map((product) => (
             <ProductCard
               key={product.node.id}
-              handle={product.node.handle}
+              href={`/product/${product.node.handle}`}
               src={product.node?.images?.edges[0]?.node?.url}
               alt={product.node?.images?.edges[0]?.node?.altText}
               name={product?.node?.title}

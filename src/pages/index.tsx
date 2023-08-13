@@ -36,7 +36,7 @@ export default function Home(
           {props.products.products.edges.map((product) => (
             <ProductCard
               key={product.node.id}
-              handle={product.node.handle}
+              href={`/product/${product.node.handle}`}
               src={product.node?.images?.edges[0]?.node?.url}
               alt={product.node?.images?.edges[0]?.node?.altText}
               name={product?.node?.title}

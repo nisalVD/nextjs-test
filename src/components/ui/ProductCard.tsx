@@ -1,15 +1,15 @@
-import { extractId, formatPrice } from "@/lib/utils";
+import { formatPrice } from "@/lib/utils";
 import Link from "next/link";
 
 export default function ProductCard({
-  handle,
+  href,
   src,
   alt,
   name,
   description,
   price,
 }: {
-  handle: string;
+  href: string;
   src: string;
   alt: string;
   name: string;
@@ -17,7 +17,7 @@ export default function ProductCard({
   price: string;
 }) {
   return (
-    <Link href={`product/${handle}`}>
+    <Link href={href}>
       <a className="group text-sm">
         <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
           <img

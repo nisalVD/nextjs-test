@@ -13,7 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query Products {\n    products(first: 6) {\n      edges {\n        node {\n          id\n          title\n          handle\n          description\n          priceRange {\n            minVariantPrice {\n              amount\n            }\n          }\n          images(first: 1) {\n            edges {\n              node {\n                url\n                altText\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n": types.ProductsDocument,
+    "\n  query Products($first: Int) {\n    products(first: $first) {\n      edges {\n        node {\n          id\n          title\n          handle\n          description\n          priceRange {\n            minVariantPrice {\n              amount\n            }\n          }\n          images(first: 1) {\n            edges {\n              node {\n                url\n                altText\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n": types.ProductsDocument,
 };
 
 /**
@@ -33,7 +33,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query Products {\n    products(first: 6) {\n      edges {\n        node {\n          id\n          title\n          handle\n          description\n          priceRange {\n            minVariantPrice {\n              amount\n            }\n          }\n          images(first: 1) {\n            edges {\n              node {\n                url\n                altText\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query Products {\n    products(first: 6) {\n      edges {\n        node {\n          id\n          title\n          handle\n          description\n          priceRange {\n            minVariantPrice {\n              amount\n            }\n          }\n          images(first: 1) {\n            edges {\n              node {\n                url\n                altText\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query Products($first: Int) {\n    products(first: $first) {\n      edges {\n        node {\n          id\n          title\n          handle\n          description\n          priceRange {\n            minVariantPrice {\n              amount\n            }\n          }\n          images(first: 1) {\n            edges {\n              node {\n                url\n                altText\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query Products($first: Int) {\n    products(first: $first) {\n      edges {\n        node {\n          id\n          title\n          handle\n          description\n          priceRange {\n            minVariantPrice {\n              amount\n            }\n          }\n          images(first: 1) {\n            edges {\n              node {\n                url\n                altText\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

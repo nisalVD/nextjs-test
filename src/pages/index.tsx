@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/Button";
 import ProductCard from "@/components/ui/ProductCard";
-import { getFirst6Products } from "@/lib/api";
+import { getProducts } from "@/lib/api";
 import { InferGetStaticPropsType } from "next";
+import Link from "next/link";
 
 export const getStaticProps = async () => {
-  const products = await getFirst6Products();
+  const products = await getProducts(3);
   return { props: { products } };
 };
 
@@ -22,7 +23,9 @@ export default function Home(
             Unleash Your Ride: Explore Top Snowboards for Every Adventure!
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button>Get Started</Button>
+            <Link href="/products">
+              <Button>Browse</Button>
+            </Link>
           </div>
         </div>
 

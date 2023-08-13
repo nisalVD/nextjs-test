@@ -12,9 +12,9 @@ const apiClient = new GraphQLClient(
   }
 );
 
-const getFirst6ProductsDocument = graphql(/* GraphQL */ `
-  query Products {
-    products(first: 6) {
+const getProductsDocument = graphql(/* GraphQL */ `
+  query Products($first: Int) {
+    products(first: $first) {
       edges {
         node {
           id
@@ -40,9 +40,11 @@ const getFirst6ProductsDocument = graphql(/* GraphQL */ `
   }
 `);
 
-async function getFirst6Products() {
-  const res = await apiClient.request(getFirst6ProductsDocument);
+async function getProducts(amount: number) {
+  const res = await apiClient.request(getProductsDocument, {
+    first: amount,
+  });
   return res;
 }
 
-export { getFirst6Products };
+export { getProducts };

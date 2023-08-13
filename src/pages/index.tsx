@@ -1,16 +1,16 @@
 import { Button } from "@/components/ui/Button";
 import ProductCard from "@/components/ui/ProductCard";
 import { getProducts } from "@/lib/api";
-import { InferGetStaticPropsType } from "next";
+import { InferGetServerSidePropsType, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const products = await getProducts(3);
   return { props: { products } };
 };
 
 export default function Home(
-  props: InferGetStaticPropsType<typeof getStaticProps>
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   return (
     <div>

@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
     <html lang="en">
       <body>
         <Header />
-        <main>
+        <main className="min-h-screen">
           <Component {...pageProps} />
         </main>
         <Footer />

@@ -13,8 +13,75 @@ const apiClient = new GraphQLClient(
 );
 
 const getProductsDocument = graphql(/* GraphQL */ `
-  query Products($first: Int) {
-    products(first: $first) {
+  query Products($first: Int!, $after: String, $before: String) {
+    products(first: $first, after: $after, before: $before) {
+      edges {
+        cursor
+        node {
+          id
+          title
+          handle
+          description
+          priceRange {
+            minVariantPrice {
+              amount
+            }
+          }
+          images(first: 1) {
+            edges {
+              node {
+                url
+                altText
+              }
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+`);
+
+async function getProducts(
+  first: number,
+  after: string = null,
+  before: string = null
+) {
+  const res = await apiClient.request(getProductsDocument, {
+    first,
+    before,
+    after,
+  });
+  return res;
+}
+
+const getProductDetailDocument = graphql(/* GraphQL */ `
+  query Product($handle: String) {
+    product(handle: $handle) {
+      id
+      title
+      description
+      handle
+      productType
+      availableForSale
+      priceRange {
+        minVariantPrice {
+          amount
+        }
+      }
+      images(first: 1) {
+        edges {
+          node {
+            url
+            altText
+          }
+        }
+      }
+    }
+    products(first: 4) {
       edges {
         node {
           id
@@ -40,9 +107,9 @@ const getProductsDocument = graphql(/* GraphQL */ `
   }
 `);
 
-async function getProducts(amount: number) {
-  const res = await apiClient.request(getProductsDocument, {
-    first: amount,
+export async function getProductDetails(handle: string) {
+  const res = await apiClient.request(getProductDetailDocument, {
+    handle,
   });
   return res;
 }

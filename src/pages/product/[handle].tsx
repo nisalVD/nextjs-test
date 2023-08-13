@@ -4,6 +4,7 @@ import { getProductDetails } from "@/lib/api";
 import ErrorPage from "next/error";
 import { formatPrice } from "@/lib/utils";
 import ProductCard from "@/components/ui/ProductCard";
+import { useCartStore } from "@/store/cartStore";
 
 export const getServerSideProps = async (ctx: any) => {
   const res = await getProductDetails(ctx.query.handle as string);
@@ -20,6 +21,8 @@ export default function Product(
   const products = props.product.products.edges.filter(
     (product) => product.node.handle !== props.product.product.handle
   );
+
+  const addCartItem = useCartStore((state) => state.addCartItem);
   return (
     <div>
       <div className="mx-auto max-w-2xl px-4 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -58,27 +61,12 @@ export default function Product(
             <div className="pt-4">
               <Button
                 onClick={() => {
-                  const currentCart = localStorage.getItem("cart");
-                  let parsedCart = {};
-
-                  try {
-                    parsedCart = JSON.parse(currentCart);
-                  } catch (err) {
-                    parsedCart = {};
-                  }
-
-                  if (parsedCart[product.handle]) {
-                    parsedCart[product.handle].qty += 1;
-                  } else {
-                    parsedCart[product.handle] = {
-                      img: product?.images?.edges[0]?.node?.url,
-                      price: product.priceRange.minVariantPrice.amount,
-                      title: product.title,
-                      qty: 1,
-                    };
-                  }
-
-                  localStorage.setItem("cart", JSON.stringify(parsedCart));
+                  addCartItem({
+                    handle: product.handle,
+                    img: product?.images?.edges[0]?.node?.url,
+                    price: product.priceRange.minVariantPrice.amount,
+                    title: product.title,
+                  });
                 }}
                 size="full"
               >

@@ -1,12 +1,8 @@
+import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
 
 export default function Cart() {
-  const cart = localStorage.getItem("cart");
-  const cartCount = cart
-    ? Object.values(JSON.parse(cart)).reduce((acc, next) => {
-        return (acc += (next as { qty: string }).qty);
-      }, 0)
-    : 0;
+  const cartCount = useCartStore((state) => state.cartItems.length);
 
   return (
     <Link href="/cart">

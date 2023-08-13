@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/Button";
 import ProductCard from "@/components/ui/ProductCard";
-import { Product, ProductsQuery } from "@/generated/graphql/types";
 import { getFirst6Products } from "@/lib/api";
-import { InferGetStaticPropsType, GetStaticProps } from "next";
+import { InferGetStaticPropsType } from "next";
 
 export const getStaticProps = async () => {
   const products = await getFirst6Products();

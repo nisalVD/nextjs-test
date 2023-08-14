@@ -13,10 +13,9 @@ const apiClient = new GraphQLClient(
 );
 
 const getProductsDocument = graphql(/* GraphQL */ `
-  query Products($first: Int!, $after: String, $before: String) {
-    products(first: $first, after: $after, before: $before) {
+  query Products($first: Int!, $after: String) {
+    products(first: $first, after: $after) {
       edges {
-        cursor
         node {
           id
           title
@@ -40,19 +39,16 @@ const getProductsDocument = graphql(/* GraphQL */ `
       pageInfo {
         hasNextPage
         hasPreviousPage
+        endCursor
+        startCursor
       }
     }
   }
 `);
 
-async function getProducts(
-  first: number,
-  after: string = null,
-  before: string = null
-) {
+export async function getProducts(first: number, after: string = null) {
   const res = await apiClient.request(getProductsDocument, {
     first,
-    before,
     after,
   });
   return res;
@@ -113,5 +109,3 @@ export async function getProductDetails(handle: string) {
   });
   return res;
 }
-
-export { getProducts };

@@ -35,6 +35,8 @@ yarn run codegen:watch
 - prettier plugin to get nicer support for tailwind classes
 - more component library like Button component
 - alot of styling cleanup and a header for easier navigation
+- I wanted just use .graphql files, but I couldn't get it to work, if i add the graphql loader it works fine
+  but it breaks mjs files which some of the libraries used were depending on
 
 ##### Deployements
 

@@ -16,4 +16,21 @@
 
 ##### Requirements:
 
-- node 16
+- node 16 added a nvmrc that would change, prompt to use correct node version, also added restriction on package.json
+- all the graphql types are generated with a codgen tool, if graphql code changes re-run the codegen, or run it on watch mode
+
+```sh
+yarn run codegen
+```
+
+to watch
+
+```sh
+yarn run codegen:watch
+```
+
+## Things to improve on
+
+- Pagination only works one way, couldn't get the pagination to work the other way :/
+- prettier plugin to get nicer support for tailwind classes
+- more component library like Button component

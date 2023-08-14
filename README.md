@@ -34,3 +34,4 @@ yarn run codegen:watch
 - Pagination only works one way, couldn't get the pagination to work the other way :/
 - prettier plugin to get nicer support for tailwind classes
 - more component library like Button component
+- alot of styling cleanup and a header for easier navigation

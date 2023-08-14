@@ -29,9 +29,14 @@ to watch
 yarn run codegen:watch
 ```
 
-## Things to improve on
+##### Things to improve on
 
 - Pagination only works one way, couldn't get the pagination to work the other way :/
 - prettier plugin to get nicer support for tailwind classes
 - more component library like Button component
 - alot of styling cleanup and a header for easier navigation
+
+##### Deployements
+
+application is deployed on vercel
+here https://nextjs-test-qg16.vercel.app/

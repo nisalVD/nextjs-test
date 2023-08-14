@@ -63,9 +63,11 @@ export default function Product(
                 onClick={() => {
                   addCartItem({
                     handle: product.handle,
-                    img: product?.images?.edges[0]?.node?.url,
+                    imgSrc: product.images?.edges[0]?.node?.url,
+                    imgAlt: product.images?.edges[0]?.node?.altText,
                     price: product.priceRange.minVariantPrice.amount,
                     title: product.title,
+                    inStock: product.availableForSale,
                   });
                 }}
                 size="full"

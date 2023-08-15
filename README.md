@@ -41,4 +41,4 @@ yarn run codegen:watch
 ##### Deployements
 
 application is deployed on vercel
-here https://nextjs-test-qg16.vercel.app/
+here https://nextjs-test-ten-tawny.vercel.app/

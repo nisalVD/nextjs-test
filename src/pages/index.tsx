@@ -17,10 +17,10 @@ export default function Home(
       <div className="mx-auto max-w-2xl pt-8 pb-4 sm:pt-40 sm:pb-20 lg:pt-40 lg:pb-20">
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Carve Your Path: Explore the Ultimate Snowboard Collection!
+            Clothique: Elevate Your Style with Trendsetting Threads
           </h1>
           <p className="mx-4 mt-6 text-lg leading-8 text-gray-600">
-            Unleash Your Ride: Explore Top Snowboards for Every Adventure!
+            Unveiling the Art of Dressing: Your Source for Fashion Expression
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Link href="/products">
